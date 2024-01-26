@@ -11,6 +11,7 @@ public class EnemyBehavior : MonoBehaviour
 
     //Data for self
     private Rigidbody2D selfRb;
+    private BoxCollider2D selfcollider;
     [SerializeField] private float speed = 3f;
     [SerializeField] private float attackDistance = 1.5f;
 
@@ -21,6 +22,7 @@ public class EnemyBehavior : MonoBehaviour
         onGround = false;
 
         selfRb = GetComponent<Rigidbody2D>();
+        selfcollider = GetComponent<BoxCollider2D>();
 
         target = GameObject.FindGameObjectWithTag("Player");
         targetTr = target.transform;
@@ -37,6 +39,9 @@ public class EnemyBehavior : MonoBehaviour
                 if (distance < attackDistance && distance > -attackDistance)
                 {
                     selfRb.velocity = new Vector3(0, 0);
+
+                    Physics2D.IgnoreCollision(target.GetComponent<BoxCollider2D>(), selfcollider , true);
+
                     Debug.Log("Attack");
                 }
                 else
@@ -49,6 +54,8 @@ public class EnemyBehavior : MonoBehaviour
                     {
                         selfRb.velocity = new Vector3(speed, selfRb.velocity.y);
                     }
+
+                    Physics2D.IgnoreCollision(target.GetComponent<BoxCollider2D>(), selfcollider, false);
                 }
             }
         }
