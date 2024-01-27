@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4030852667942711260}
   - component: {fileID: 5589628055214389123}
   - component: {fileID: 9156433624471063825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -173,9 +173,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a835d412b03364b8ddbd37890076cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 8971826104219001126, guid: e0f734528502d554f826cb714c18d284, type: 3}
   speed: 3
   attackDistance: 1.5
+  animator: {fileID: 0}
+  headAttackPoint: {fileID: 0}
+  handAttackPoint: {fileID: 0}
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  headAttackingRange: 0.5
+  handAttackingRange: 0.5
+  headAttackDamage: 10
+  handAttackDamage: 10
+  headAttackRate: 6
+  handAttackRate: 6
+  headAttackStaminaCost: 10
+  handAttackStaminaCost: 10
+  healthSystem: {fileID: 0}
 --- !u!114 &5589628055214389123
 MonoBehaviour:
   m_ObjectHideFlags: 0
