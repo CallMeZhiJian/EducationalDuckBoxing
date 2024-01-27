@@ -43,7 +43,7 @@ GameObject:
   m_Layer: 8
   m_Name: HeadAttackPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -199,12 +199,12 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  headAttackingRange: 0.31
-  handAttackingRange: 0.28
+  headAttackingRange: 1
+  handAttackingRange: 1.5
   headAttackDamage: 10
   handAttackDamage: 10
-  headAttackRate: 10
-  handAttackRate: 10
+  headAttackRate: 2
+  handAttackRate: 2
   headAttackStaminaCost: 10
   handAttackStaminaCost: 10
   healthSystem: {fileID: 7334355862509328796}

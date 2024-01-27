@@ -60,13 +60,13 @@ public class PlayerBehaviour : MonoBehaviour
                 transform.localScale = new Vector3(1f, 1f, 1f);
             }
 
-            //if (Input.GetKeyDown(KeyCode.Space))
+            //if (Input.GetKeyDown(KeyCode.Q))
             //{
             //    quack.Play();
             //}
             if (Time.time >= nextAttackTime)
             {
-                if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.J))
+                if (Input.GetKeyDown(KeyCode.W))
                 {
                     if (healthSystem.currentStamina >= headAttackStaminaCost)
                     {
@@ -74,7 +74,7 @@ public class PlayerBehaviour : MonoBehaviour
                         nextAttackTime = Time.time + 1f / headAttackRate;
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.K))
+                else if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (healthSystem.currentStamina >= handAttackStaminaCost)
                     {
