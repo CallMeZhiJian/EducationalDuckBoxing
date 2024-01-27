@@ -603,6 +603,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1686719240882306173, guid: e0f734528502d554f826cb714c18d284, type: 3}
   m_PrefabInstance: {fileID: 707284451509440518}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1509252290 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1172893732623341374, guid: e0f734528502d554f826cb714c18d284, type: 3}
+  m_PrefabInstance: {fileID: 707284451509440518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564694000
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +830,7 @@ MonoBehaviour:
   healthRegenRate: 0
   staminaRegenRate: 1
   type: 1
+  animator: {fileID: 0}
 --- !u!1001 &2024942868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -949,6 +955,14 @@ PrefabInstance:
     - target: {fileID: 6851412048511573655, guid: e0f734528502d554f826cb714c18d284, type: 3}
       propertyPath: headAttackingRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334355862509328796, guid: e0f734528502d554f826cb714c18d284, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1509252290}
+    - target: {fileID: 7334355862509328796, guid: e0f734528502d554f826cb714c18d284, type: 3}
+      propertyPath: healthRegenRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8971826104219001126, guid: e0f734528502d554f826cb714c18d284, type: 3}
       propertyPath: m_Name

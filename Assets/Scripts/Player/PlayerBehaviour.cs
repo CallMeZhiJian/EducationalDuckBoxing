@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Player Movement")]
     public float speed = 2.0f;
     private float Move;
 
@@ -13,20 +14,24 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Animator animator;
 
-    public Transform headAttackPoint, handAttackPoint;
     public LayerMask enemyLayers;
 
-    public float headAttackingRange = 0.5f;
-    public float handAttackingRange = 0.5f;
+    [Header("Head Attack")]
+    public Transform headAttackPoint;
+    [Range(0f, 5f)] public float headAttackingRange = 0.5f;
     public int headAttackDamage = 10;
-    public int handAttackDamage = 10;
     public float headAttackRate = 6f;
+    public int headAttackStaminaCost = 10;
+
+    [Header("Hand Attack")]    
+    public Transform handAttackPoint;
+    [Range(0f, 5f)] public float handAttackingRange = 0.5f;
+    public int handAttackDamage = 10;
     public float handAttackRate = 6f;
     float nextAttackTime = 0f;
-
-    public int headAttackStaminaCost = 10;
     public int handAttackStaminaCost = 10;
 
+    [Header("Health")]
     public HealthSystem healthSystem;
 
     public float stunChance = 0.2f;

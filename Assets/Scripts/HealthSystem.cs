@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Type
 {
@@ -15,12 +16,12 @@ public class HealthSystem : MonoBehaviour
     public int maxStamina = 100;
     public int currentStamina;
 
-    public int healthRegenRate ;
+    public int healthRegenRate = 1;
     public int staminaRegenRate = 1;
 
     public Type type = Type.Enemy;
 
-    //public Animator animator;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +32,20 @@ public class HealthSystem : MonoBehaviour
         {
             currentStamina = maxStamina;
             InvokeRepeating("RegenerateStamina", 1f, 1f);
+            InvokeRepeating("RegenerateHealth", 1f, 2f);
         }
             
     }
+    private void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
     void RegenerateStamina()
     {
-        if (type == Type.Player)
+        if (type == Type.Player )
         {
             currentStamina += staminaRegenRate;
 
@@ -45,13 +54,15 @@ public class HealthSystem : MonoBehaviour
     }
     void RegenerateHealth()
     { 
-        if (type == Type.Player)
+        if (type == Type.Player && currentHealth <= 0)
         {
-            currentStamina += healthRegenRate;
+            currentHealth += healthRegenRate;
 
-            currentStamina = Mathf.Min(currentHealth, maxHealth);
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+                        
         }
     }
+    
     public void UsedStamina(int consumed)
     {
         if (type == Type.Player )
@@ -66,7 +77,6 @@ public class HealthSystem : MonoBehaviour
         {
             currentHealth -= damage;
 
-            //animator.SetTrigger("Hurt");
 
             if (currentHealth <= 0)
             {
@@ -79,9 +89,19 @@ public class HealthSystem : MonoBehaviour
     {
         Debug.Log("Died");
 
-        //animator.SetBool("IsDead", true);
+        if (type == Type.Player)
+        {
+            animator.SetBool("IsDead", true);
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
+            Debug.Log("Player Die");
+            
+        }
+        else if (type == Type.Enemy)
+        {
+            Destroy(gameObject);
+        }
 
-        //GetComponent<BoxCollider2D>().enabled = false;
-        //this.enabled = false;
     }
+
 }
