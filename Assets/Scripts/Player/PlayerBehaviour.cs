@@ -20,11 +20,20 @@ public class PlayerBehaviour : MonoBehaviour
     public float handAttackingRange = 0.5f;
     public int headAttackDamage = 10;
     public int handAttackDamage = 10;
+    public float headAttackRate = 2f;
+    public float handAttackRate = 2f;
+    float nextAttackTime = 0f;
+
+    public int headAttackStaminaCost = 10;
+    public int handAttackStaminaCost = 10;
+
+    public HealthSystem healthSystem;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthSystem = GetComponent<HealthSystem>();
     }
 
     // Update is called once per frame
@@ -38,41 +47,60 @@ public class PlayerBehaviour : MonoBehaviour
         //{
         //    quack.Play();
         //}
-
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.J))
+        if(Time.time >= nextAttackTime)
         {
-            HeadAttack();
+            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.J))
+            {
+                if (healthSystem.currentStamina >= headAttackStaminaCost)
+                {
+                    HeadAttack();
+                    nextAttackTime = Time.time + 1f / headAttackRate;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.K))
+            {
+                if (healthSystem.currentStamina >= handAttackStaminaCost)
+                {
+                    HandAttack();
+                    nextAttackTime = Time.time + 1f / headAttackRate;
+                }
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.K))
-        {
-            HandAttack();
-        }
+        
     }
 
     void HeadAttack()
     {
-        //animator.SetTrigger("headAttack");
+        
+            healthSystem.UsedStamina(headAttackStaminaCost);
+            //animator.SetTrigger("headAttack");
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(headAttackPoint.position, headAttackingRange, enemyLayers);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(headAttackPoint.position, headAttackingRange, enemyLayers);
 
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            Debug.Log("We hit enemy by head");
-            enemy.GetComponent<HealthSystem>().TakeDamage(headAttackDamage);
-        }    
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("We hit enemy by head");
+                enemy.GetComponent<HealthSystem>().TakeDamage(headAttackDamage);
+            }
+
+        
     }
 
     void HandAttack()
     {
-        //animator.SetTrigger("handAttack");
+        
+            healthSystem.UsedStamina(handAttackStaminaCost);
+            //animator.SetTrigger("handAttack");
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(handAttackPoint.position, handAttackingRange, enemyLayers);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(handAttackPoint.position, handAttackingRange, enemyLayers);
 
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            Debug.Log("We hit enemy by hand");
-            enemy.GetComponent<HealthSystem>().TakeDamage(handAttackDamage);
-        }    
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("We hit enemy by hand");
+                enemy.GetComponent<HealthSystem>().TakeDamage(handAttackDamage);
+            }
+
+        
     }
 
     void OnDrawGizmosSelected()

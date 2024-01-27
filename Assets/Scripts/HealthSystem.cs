@@ -20,6 +20,7 @@ public class HealthSystem : MonoBehaviour
 
     public Type type = Type.Enemy;
 
+    //public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -65,15 +66,22 @@ public class HealthSystem : MonoBehaviour
         {
             currentHealth -= damage;
 
+            //animator.SetTrigger("Hurt");
+
             if (currentHealth <= 0)
             {
                 Die();
             }
         }  
     }
-
+    
     void Die()
     {
         Debug.Log("Died");
+
+        //animator.SetBool("IsDead", true);
+
+        //GetComponent<BoxCollider2D>().enabled = false;
+        //this.enabled = false;
     }
 }
