@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     //public AudioSource quack;
 
-    public Animator animator ;
+    public Animator animator;
 
     public Transform headAttackPoint, handAttackPoint;
     public LayerMask enemyLayers;
@@ -32,8 +32,6 @@ public class PlayerBehaviour : MonoBehaviour
     public float stunChance = 0.2f;
 
     private bool isStunned = false;
-
-    public float stunDuration = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +72,6 @@ public class PlayerBehaviour : MonoBehaviour
                     {
                         HeadAttack();
                         nextAttackTime = Time.time + 1f / headAttackRate;
-                    
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.K))
@@ -87,14 +84,14 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     void HeadAttack()
     {
         healthSystem.UsedStamina(headAttackStaminaCost);
         animator.SetTrigger("HeadAttack");
-        
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(headAttackPoint.position, headAttackingRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -102,6 +99,8 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.Log("We hit enemy by head");
             enemy.GetComponent<HealthSystem>().TakeDamage(headAttackDamage);
         }
+
+        float stunDuration = 1.0f;
 
         if (Random.value < stunChance)
         {
@@ -121,12 +120,12 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.Log("We hit enemy by hand");
             enemy.GetComponent<HealthSystem>().TakeDamage(handAttackDamage);
         }
-     
+
     }
 
     void OnDrawGizmosSelected()
     {
-        if(handAttackPoint == null || headAttackPoint == null)
+        if (handAttackPoint == null || headAttackPoint == null)
         {
             return;
         }
@@ -151,6 +150,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(stunDuration);
 
+        // After stun duration, resume normal controls
         isStunned = false;
     }
 }

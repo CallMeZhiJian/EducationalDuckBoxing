@@ -523,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 609413492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.69, y: 0.95, z: 0}
+  m_LocalPosition: {x: -4.69, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -554,13 +554,12 @@ MonoBehaviour:
   handAttackingRange: 0.28
   headAttackDamage: 10
   handAttackDamage: 10
-  headAttackRate: 2
-  handAttackRate: 2
+  headAttackRate: 4
+  handAttackRate: 4
   headAttackStaminaCost: 10
   handAttackStaminaCost: 10
   healthSystem: {fileID: 609413498}
-  stunChance: 0.2
-  stunDuration: 1
+  stunChance: 0.5
 --- !u!114 &609413498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +623,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0155386925, y: 0}
+  m_Offset: {x: -0.0155386925, y: 0.16869402}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -635,7 +634,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.9010773, y: 3.74}
+  m_Size: {x: 2.9010773, y: 3.4026122}
   m_EdgeRadius: 0
 --- !u!95 &609413501
 Animator:
@@ -800,8 +799,8 @@ Transform:
   m_GameObject: {fileID: 1659664607}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.935, y: -0.017, z: 0}
-  m_LocalScale: {x: 1.874, y: 1.874, z: 1.874}
+  m_LocalPosition: {x: 7.7784, y: 0.9931, z: 0}
+  m_LocalScale: {x: 3.5607872, y: 3.894172, z: 1.874}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
