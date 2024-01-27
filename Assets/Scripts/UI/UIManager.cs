@@ -9,40 +9,17 @@ public class UIManager : MonoBehaviour
     private GameObject audioPage;
     private GameObject controlsPage;
 
-    //private GameObject inGameStuff;
-    //private GameObject pauseScreen;
-
-    //private bool isPaused;
-
-    private void Start()
+    private void Awake()
     {
         settingScreen = GameObject.Find("SettingScreen");
-        //pauseScreen = GameObject.Find("PauseScreen");
+        
         //inGameStuff = GameObject.Find("InGame");
         audioPage = GameObject.Find("AudioPage");
         controlsPage = GameObject.Find("ControlsPage");
-
-        //isPaused = false;
-        //if(pauseScreen != null)
-        //{
-        //    pauseScreen.SetActive(false);
-        //}
     }
 
     private void Update()
-    {
-        //if(inGameStuff != null)
-        //{
-        //    if (SceneManager.GetActiveScene().name != "MainTitle")
-        //    {
-        //        inGameStuff.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        inGameStuff.SetActive(false);
-        //    }
-        //}
-            
+    {            
         //Setting
         if(settingScreen != null)
         {
@@ -71,15 +48,7 @@ public class UIManager : MonoBehaviour
                     }
                 }
             }
-        }   
-        
-        //if(pauseScreen != null)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Escape))
-        //    {
-        //        UnpausePauseGame();
-        //    }
-        //}  
+        }  
     }
 
     public void OnOffSetting()
@@ -109,28 +78,5 @@ public class UIManager : MonoBehaviour
     }
 
     //Audio
-
-
-    //InGame Usage
-    //public void UnpausePauseGame()
-    //{
-    //    if (isPaused)
-    //    {
-    //        pauseScreen.SetActive(false);
-    //        Time.timeScale = 1;
-    //        isPaused = false;
-    //    }
-    //    else
-    //    {
-    //        pauseScreen.SetActive(true);
-    //        Time.timeScale = 0;
-    //        isPaused = true;
-    //    }
-    //}
-
-    //public void BackToMainMenu()
-    //{
-    //    Time.timeScale = 1;
-    //    SceneManager.LoadScene("MainTitle");
-    //}
+    
 }
