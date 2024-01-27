@@ -1,50 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
-
-    private GameObject settingScreen;
+    public GameObject settingScreen;
     private GameObject audioPage;
     private GameObject controlsPage;
 
-    private void Awake()
+    //private GameObject inGameStuff;
+    //private GameObject pauseScreen;
+
+    //private bool isPaused;
+
+    private void Start()
     {
         settingScreen = GameObject.Find("SettingScreen");
+        //pauseScreen = GameObject.Find("PauseScreen");
+        //inGameStuff = GameObject.Find("InGame");
         audioPage = GameObject.Find("AudioPage");
-        controlsPage = GameObject.Find("ControlsPage");        
+        controlsPage = GameObject.Find("ControlsPage");
+
+        //isPaused = false;
+        //if(pauseScreen != null)
+        //{
+        //    pauseScreen.SetActive(false);
+        //}
     }
 
     private void Update()
     {
+        //if(inGameStuff != null)
+        //{
+        //    if (SceneManager.GetActiveScene().name != "MainTitle")
+        //    {
+        //        inGameStuff.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        inGameStuff.SetActive(false);
+        //    }
+        //}
+            
         //Setting
-        if (settingScreen.GetComponent<Animator>().GetBool("onSetting"))
+        if(settingScreen != null)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (settingScreen.GetComponent<Animator>().GetBool("onSetting"))
             {
-                if (audioPage.activeInHierarchy)
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    ControlsPage();
+                    if (audioPage.activeInHierarchy)
+                    {
+                        ControlsPage();
+                    }
+                    else if (controlsPage.activeInHierarchy)
+                    {
+                        AudioPage();
+                    }
                 }
-                else if (controlsPage.activeInHierarchy)
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    AudioPage();
+                    if (audioPage.activeInHierarchy)
+                    {
+                        ControlsPage();
+                    }
+                    else if (controlsPage.activeInHierarchy)
+                    {
+                        AudioPage();
+                    }
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                if (audioPage.activeInHierarchy)
-                {
-                    ControlsPage();
-                }
-                else if (controlsPage.activeInHierarchy)
-                {
-                    AudioPage();
-                }
-            }
-        }  
+        }   
+        
+        //if(pauseScreen != null)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Escape))
+        //    {
+        //        UnpausePauseGame();
+        //    }
+        //}  
     }
 
     public void OnOffSetting()
@@ -72,4 +107,30 @@ public class UIManager : MonoBehaviour
         controlsPage.SetActive(true);
         audioPage.SetActive(false);
     }
+
+    //Audio
+
+
+    //InGame Usage
+    //public void UnpausePauseGame()
+    //{
+    //    if (isPaused)
+    //    {
+    //        pauseScreen.SetActive(false);
+    //        Time.timeScale = 1;
+    //        isPaused = false;
+    //    }
+    //    else
+    //    {
+    //        pauseScreen.SetActive(true);
+    //        Time.timeScale = 0;
+    //        isPaused = true;
+    //    }
+    //}
+
+    //public void BackToMainMenu()
+    //{
+    //    Time.timeScale = 1;
+    //    SceneManager.LoadScene("MainTitle");
+    //}
 }

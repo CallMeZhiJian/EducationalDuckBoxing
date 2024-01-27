@@ -10,6 +10,7 @@ public class MainUI : UIManager
 
     private void Start()
     {
+        settingScreen = GameObject.Find("SettingScreen");
         duckHead = GameObject.Find("DuckHead");
     }
 
