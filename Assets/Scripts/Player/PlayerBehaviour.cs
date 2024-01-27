@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     //public AudioSource quack;
 
-    public Animator animator;
+    public Animator animator ;
 
     public Transform headAttackPoint, handAttackPoint;
     public LayerMask enemyLayers;
@@ -29,7 +29,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     public HealthSystem healthSystem;
 
-    //public float stunChance = 0.2f;
+    public float stunChance = 0.2f;
+
+    private bool isStunned = false;
+
+    public float stunDuration = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,40 +45,45 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move = Input.GetAxis("Horizontal") ;
-        Debug.Log(Move);
-        rb.velocity = new Vector2 (Move * speed, rb.velocity.y);
-
-        animator.SetFloat("Speed", Mathf.Abs(Move));
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    quack.Play();
-        //}
-        if(Time.time >= nextAttackTime)
+        if (!isStunned)
         {
-            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.J))
+            Move = Input.GetAxis("Horizontal");
+            Debug.Log(Move);
+            rb.velocity = new Vector2(Move * speed, rb.velocity.y);
+
+            animator.SetBool("IsWalking", Mathf.Abs(Move) > 0.1f);
+
+            if (Move > 0.1f) // Moving to the right
             {
-                if (healthSystem.currentStamina >= headAttackStaminaCost)
-                {
-                    HeadAttack();
-
-                    animator.SetBool("IsHeadAttacking",true);
-
-                    //if (Random.value < stunChance)
-                    //{
-                    //    StunPlayer();
-                    //}
-
-                    nextAttackTime = Time.time + 1f / headAttackRate;
-                }
+                transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.K))
+            else if (Move < -0.1f)
             {
-                if (healthSystem.currentStamina >= handAttackStaminaCost)
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    quack.Play();
+            //}
+            if (Time.time >= nextAttackTime)
+            {
+                if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.J))
                 {
-                    HandAttack();
-                    nextAttackTime = Time.time + 1f / headAttackRate;
+                    if (healthSystem.currentStamina >= headAttackStaminaCost)
+                    {
+                        HeadAttack();
+                        nextAttackTime = Time.time + 1f / headAttackRate;
+                    
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.K))
+                {
+                    if (healthSystem.currentStamina >= handAttackStaminaCost)
+                    {
+                        HandAttack();
+                        nextAttackTime = Time.time + 1f / headAttackRate;
+                    }
                 }
             }
         }
@@ -83,36 +92,36 @@ public class PlayerBehaviour : MonoBehaviour
 
     void HeadAttack()
     {
+        healthSystem.UsedStamina(headAttackStaminaCost);
+        animator.SetTrigger("HeadAttack");
         
-            healthSystem.UsedStamina(headAttackStaminaCost);
-            //animator.SetTrigger("headAttack");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(headAttackPoint.position, headAttackingRange, enemyLayers);
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(headAttackPoint.position, headAttackingRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit enemy by head");
+            enemy.GetComponent<HealthSystem>().TakeDamage(headAttackDamage);
+        }
 
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                Debug.Log("We hit enemy by head");
-                enemy.GetComponent<HealthSystem>().TakeDamage(headAttackDamage);
-            }
-
-        
+        if (Random.value < stunChance)
+        {
+            StunPlayer(stunDuration);
+        }
     }
 
     void HandAttack()
     {
-        
-            healthSystem.UsedStamina(handAttackStaminaCost);
-            //animator.SetTrigger("handAttack");
+        healthSystem.UsedStamina(handAttackStaminaCost);
+        animator.SetTrigger("Slap");
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(handAttackPoint.position, handAttackingRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(handAttackPoint.position, handAttackingRange, enemyLayers);
 
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                Debug.Log("We hit enemy by hand");
-                enemy.GetComponent<HealthSystem>().TakeDamage(handAttackDamage);
-            }
-
-        
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit enemy by hand");
+            enemy.GetComponent<HealthSystem>().TakeDamage(handAttackDamage);
+        }
+     
     }
 
     void OnDrawGizmosSelected()
@@ -126,13 +135,22 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(handAttackPoint.position, handAttackingRange);
     }
 
-    //void StunPlayer()
-    //{
-    //    TimeStop timeStop = GetComponent<TimeStop>();
-    //    if (timeStop != null)
-    //    {
-    //        timeStop.StopTime(0.05f, 10, 3.0f);
-    //        Debug.Log("I am stun");
-    //    }
-    //}
+
+    void StunPlayer(float stunDuration)
+    {
+        if (!isStunned)
+        {
+            isStunned = true;
+            animator.SetTrigger("Stun");
+
+            StartCoroutine(StunCooldown(stunDuration));
+        }
+    }
+
+    IEnumerator StunCooldown(float stunDuration)
+    {
+        yield return new WaitForSeconds(stunDuration);
+
+        isStunned = false;
+    }
 }

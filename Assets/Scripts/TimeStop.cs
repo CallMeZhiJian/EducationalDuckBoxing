@@ -8,13 +8,13 @@ public class TimeStop : MonoBehaviour
     private bool RestoreTime;
 
     //public GameObject ImpactEffect;
-    //private Animator anim;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         RestoreTime = false;
-        //anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class TimeStop : MonoBehaviour
             {
                 Time.timeScale = 1f;
                 RestoreTime = false;
-                //anim.SetBool("Stun", false);
+                anim.SetBool("Stunning", false);
             }
         }
     }
@@ -50,7 +50,7 @@ public class TimeStop : MonoBehaviour
         }
 
         //Instantiate(ImpactEffect, transform.position, Quaternion.identity);
-        //anim.SetBool("Stun", true);
+        anim.SetBool("Stunning", true);
 
         Time.timeScale = ChangeTime;
     }
