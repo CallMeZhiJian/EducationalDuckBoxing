@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     //public AudioSource quack;
 
-    //public Animator animator;
+    public Animator animator;
 
     public Transform headAttackPoint, handAttackPoint;
     public LayerMask enemyLayers;
@@ -29,6 +29,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public HealthSystem healthSystem;
 
+    //public float stunChance = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +41,11 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move = Input.GetAxis("Horizontal");
-
+        Move = Input.GetAxis("Horizontal") ;
+        Debug.Log(Move);
         rb.velocity = new Vector2 (Move * speed, rb.velocity.y);
+
+        animator.SetFloat("Speed", Mathf.Abs(Move));
 
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
@@ -54,6 +58,14 @@ public class PlayerBehaviour : MonoBehaviour
                 if (healthSystem.currentStamina >= headAttackStaminaCost)
                 {
                     HeadAttack();
+
+                    animator.SetBool("IsHeadAttacking",true);
+
+                    //if (Random.value < stunChance)
+                    //{
+                    //    StunPlayer();
+                    //}
+
                     nextAttackTime = Time.time + 1f / headAttackRate;
                 }
             }
@@ -113,4 +125,14 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(headAttackPoint.position, headAttackingRange);
         Gizmos.DrawWireSphere(handAttackPoint.position, handAttackingRange);
     }
+
+    //void StunPlayer()
+    //{
+    //    TimeStop timeStop = GetComponent<TimeStop>();
+    //    if (timeStop != null)
+    //    {
+    //        timeStop.StopTime(0.05f, 10, 3.0f);
+    //        Debug.Log("I am stun");
+    //    }
+    //}
 }
