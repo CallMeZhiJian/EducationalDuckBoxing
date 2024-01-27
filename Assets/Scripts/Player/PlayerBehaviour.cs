@@ -20,8 +20,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float handAttackingRange = 0.5f;
     public int headAttackDamage = 10;
     public int handAttackDamage = 10;
-    public float headAttackRate = 2f;
-    public float handAttackRate = 2f;
+    public float headAttackRate = 6f;
+    public float handAttackRate = 6f;
     float nextAttackTime = 0f;
 
     public int headAttackStaminaCost = 10;
@@ -84,7 +84,6 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
         }
-
     }
 
     void HeadAttack()
