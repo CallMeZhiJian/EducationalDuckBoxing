@@ -72,7 +72,7 @@ public class PlayerBehaviour : MonoBehaviour
                 }
                 else
                 {
-                    AudioManager.instance.PlaySFX("duck-quack-112941");
+                    AudioManager.instance.PlaySFX("Duck Quack 2");
                 }
             }
 

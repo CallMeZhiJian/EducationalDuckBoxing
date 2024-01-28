@@ -11,7 +11,7 @@ public class ScaleWithPivot : MonoBehaviour
     private void Start()
     {
         initialScale = transform.localScale;
-        //UpdateTransformForScale();
+        UpdateTransformForScale();
     }
 
     private void Update()

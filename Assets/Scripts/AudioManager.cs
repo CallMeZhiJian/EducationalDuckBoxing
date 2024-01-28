@@ -49,6 +49,8 @@ public class AudioManager : MonoBehaviour
         {
             BGMDictionary.Add(bGM_Datas[i]._SceneName, bGM_Datas[i]._BGM);
         }
+
+        PlayBGM();
     }
 
     public void UpdateSFX()
@@ -87,7 +89,7 @@ public class AudioManager : MonoBehaviour
 
         if (SFXDictionary.TryGetValue(clipName, out audioClip))
         {
-            _SFXSource.Stop();
+            //_SFXSource.Stop();
             _SFXSource.clip = audioClip;
             _SFXSource.Play();
         }
