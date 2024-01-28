@@ -194,18 +194,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   animator: {fileID: 1172893732623341374}
-  headAttackPoint: {fileID: 4206591378797892295}
-  handAttackPoint: {fileID: 648612831754616866}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
+  headAttackPoint: {fileID: 4206591378797892295}
   headAttackingRange: 1
-  handAttackingRange: 1.5
   headAttackDamage: 10
-  handAttackDamage: 10
   headAttackRate: 2
-  handAttackRate: 2
   headAttackStaminaCost: 10
+  handAttackPoint: {fileID: 648612831754616866}
+  handAttackingRange: 1.5
+  handAttackDamage: 4
+  handAttackRate: 3
   handAttackStaminaCost: 10
   healthSystem: {fileID: 7334355862509328796}
   stunChance: 0.5
@@ -228,6 +228,7 @@ MonoBehaviour:
   healthRegenRate: 0
   staminaRegenRate: 10
   type: 0
+  animator: {fileID: 0}
 --- !u!61 &5543067547608149608
 BoxCollider2D:
   m_ObjectHideFlags: 0

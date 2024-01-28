@@ -21,6 +21,7 @@ public class HealthSystem : MonoBehaviour
 
     public Type type = Type.Enemy;
 
+
     public Animator animator;
 
     // Start is called before the first frame update
@@ -92,16 +93,22 @@ public class HealthSystem : MonoBehaviour
         if (type == Type.Player)
         {
             animator.SetBool("IsDead", true);
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneIndex);
             Debug.Log("Player Die");
-            
+
+            Invoke("ReloadScene", 2f);
+
         }
         else if (type == Type.Enemy)
         {
             Destroy(gameObject);
         }
 
+    }
+
+    void ReloadScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
 }

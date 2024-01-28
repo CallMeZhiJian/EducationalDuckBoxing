@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1032617392850158389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2788460826163755551}
+  m_Layer: 10
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2788460826163755551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032617392850158389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.48, y: -0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6038265872099508815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6473690220663630820
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,10 +62,12 @@ Transform:
   m_GameObject: {fileID: 6473690220663630820}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.29, y: 0.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 990297034938749948}
+  - {fileID: 2788460826163755551}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7870912856714675074
@@ -176,21 +209,21 @@ MonoBehaviour:
   target: {fileID: 8971826104219001126, guid: e0f734528502d554f826cb714c18d284, type: 3}
   speed: 3
   attackDistance: 1.5
-  animator: {fileID: 0}
-  headAttackPoint: {fileID: 0}
-  handAttackPoint: {fileID: 0}
+  animator: {fileID: 5617602954236594304}
+  headAttackPoint: {fileID: 990297034938749948}
+  handAttackPoint: {fileID: 2788460826163755551}
   playerLayers:
     serializedVersion: 2
-    m_Bits: 0
-  headAttackingRange: 0.5
-  handAttackingRange: 0.5
+    m_Bits: 256
+  headAttackingRange: 1
+  handAttackingRange: 1.5
   headAttackDamage: 10
-  handAttackDamage: 10
-  headAttackRate: 6
-  handAttackRate: 6
+  handAttackDamage: 0
+  headAttackRate: 3
+  handAttackRate: 0
   headAttackStaminaCost: 10
   handAttackStaminaCost: 10
-  healthSystem: {fileID: 0}
+  healthSystem: {fileID: 5589628055214389123}
   helmetDuck: 1
 --- !u!114 &5589628055214389123
 MonoBehaviour:
@@ -211,6 +244,7 @@ MonoBehaviour:
   healthRegenRate: 0
   staminaRegenRate: 1
   type: 1
+  animator: {fileID: 5617602954236594304}
 --- !u!95 &5617602954236594304
 Animator:
   serializedVersion: 5
@@ -232,3 +266,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8284925568809034894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990297034938749948}
+  m_Layer: 10
+  m_Name: Beak
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &990297034938749948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284925568809034894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6038265872099508815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

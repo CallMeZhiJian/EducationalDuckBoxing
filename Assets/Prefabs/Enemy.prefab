@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7177035080902496755}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Hand
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1910490833005007287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.07, y: -0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 753780534190944995}
   m_Layer: 10
-  m_Name: GameObject (1)
+  m_Name: Beak
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 5730181641812238494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.31, y: 1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 6473690220663630820}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.51, y: 0.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -241,20 +241,21 @@ MonoBehaviour:
   speed: 2
   attackDistance: 3.5
   animator: {fileID: 3387809587455748430}
-  headAttackPoint: {fileID: 7177035080902496755}
-  handAttackPoint: {fileID: 753780534190944995}
+  headAttackPoint: {fileID: 753780534190944995}
+  handAttackPoint: {fileID: 7177035080902496755}
   playerLayers:
     serializedVersion: 2
     m_Bits: 256
-  headAttackingRange: 0.5
-  handAttackingRange: 0.5
-  headAttackDamage: 10
-  handAttackDamage: 10
-  headAttackRate: 6
-  handAttackRate: 6
+  headAttackingRange: 1
+  handAttackingRange: 1.5
+  headAttackDamage: 4
+  handAttackDamage: 4
+  headAttackRate: 2
+  handAttackRate: 2
   headAttackStaminaCost: 10
   handAttackStaminaCost: 10
   healthSystem: {fileID: 5589628055214389123}
+  helmetDuck: 0
 --- !u!114 &5589628055214389123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,13 +268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde74bd5ce502e3499cff145daa5c9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 30
   currentHealth: 0
   maxStamina: 100
   currentStamina: 0
   healthRegenRate: 0
   staminaRegenRate: 1
   type: 1
+  animator: {fileID: 0}
 --- !u!95 &3387809587455748430
 Animator:
   serializedVersion: 5
