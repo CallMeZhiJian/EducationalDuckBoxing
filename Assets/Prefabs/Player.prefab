@@ -209,6 +209,9 @@ MonoBehaviour:
   handAttackStaminaCost: 10
   healthSystem: {fileID: 7334355862509328796}
   stunChance: 0.5
+  quackSounds:
+  - {fileID: 8300000, guid: d9c0fff2e6e3f9f469a608fcbf06305f, type: 3}
+  - {fileID: 8300000, guid: 2d090d3b83563fb439655462151f93b2, type: 3}
 --- !u!114 &7334355862509328796
 MonoBehaviour:
   m_ObjectHideFlags: 0
