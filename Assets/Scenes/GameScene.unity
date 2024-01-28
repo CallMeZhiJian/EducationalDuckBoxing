@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 535897064}
   - component: {fileID: 535897063}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,6 +1021,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingScreen: {fileID: 0}
+  _MusicSlider: {fileID: 0}
+  _SFXSlider: {fileID: 0}
+  healthSliderBar: {fileID: 535897064}
+  staminaSliderBar: {fileID: 724887383}
+  playerHealthSystem: {fileID: 2076343446}
 --- !u!1 &599983402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1464,7 @@ GameObject:
   - component: {fileID: 724887383}
   - component: {fileID: 724887382}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: StaminaSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,7 +1857,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 119.01, y: 10.799999}
+  m_Size: {x: 225.39, y: 10.799999}
   m_AdaptiveModeThreshold: 1
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2728,10 +2733,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6851412048511573655, guid: e0f734528502d554f826cb714c18d284, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8971826104219001126, guid: e0f734528502d554f826cb714c18d284, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2744,6 +2745,17 @@ PrefabInstance:
       addedObject: {fileID: 519420032}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f734528502d554f826cb714c18d284, type: 3}
+--- !u!114 &2076343446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7334355862509328796, guid: e0f734528502d554f826cb714c18d284, type: 3}
+  m_PrefabInstance: {fileID: 2076343442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde74bd5ce502e3499cff145daa5c9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2184be10fe4ec3246963685518e83784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   animator: {fileID: 1172893732623341374}
   enemyLayers:
     serializedVersion: 2
@@ -209,9 +209,6 @@ MonoBehaviour:
   handAttackStaminaCost: 10
   healthSystem: {fileID: 7334355862509328796}
   stunChance: 0.5
-  quackSounds:
-  - {fileID: 8300000, guid: d9c0fff2e6e3f9f469a608fcbf06305f, type: 3}
-  - {fileID: 8300000, guid: 2d090d3b83563fb439655462151f93b2, type: 3}
 --- !u!114 &7334355862509328796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +228,7 @@ MonoBehaviour:
   healthRegenRate: 0
   staminaRegenRate: 10
   type: 0
-  animator: {fileID: 0}
+  animator: {fileID: 1172893732623341374}
 --- !u!61 &5543067547608149608
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InGameUI : UIManager
 {
     private GameObject pauseScreen;
 
     private bool isPaused;
+
+    [SerializeField] private Slider healthSliderBar;
+    [SerializeField] private Slider staminaSliderBar;
+
+    [SerializeField] private HealthSystem playerHealthSystem;
 
     private void Start()
     {
@@ -20,6 +26,12 @@ public class InGameUI : UIManager
         }
 
         AudioManager.instance.PlayBGM();
+
+        healthSliderBar.maxValue = playerHealthSystem.maxHealth;
+        staminaSliderBar.maxValue = playerHealthSystem.maxStamina;
+
+        healthSliderBar.value = playerHealthSystem.currentHealth;
+        staminaSliderBar.value = playerHealthSystem.currentStamina;
     }
 
     private void Update()
@@ -31,6 +43,9 @@ public class InGameUI : UIManager
                 UnpausePauseGame();
             }
         }
+
+        HealthVisualise();
+        StaminaVisualise();
     }
 
     public void UnpausePauseGame()
@@ -53,5 +68,15 @@ public class InGameUI : UIManager
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainTitle");
+    }
+
+    public void HealthVisualise()
+    {
+        healthSliderBar.value = playerHealthSystem.currentHealth;
+    }
+
+    public void StaminaVisualise()
+    {
+        staminaSliderBar.value = playerHealthSystem.currentStamina;
     }
 }

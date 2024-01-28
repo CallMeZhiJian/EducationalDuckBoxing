@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 14917065}
   - component: {fileID: 14917064}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2073,6 +2073,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingScreen: {fileID: 0}
+  _MusicSlider: {fileID: 0}
+  _SFXSlider: {fileID: 0}
+  healthSliderBar: {fileID: 14917065}
+  staminaSliderBar: {fileID: 2123554915}
+  playerHealthSystem: {fileID: 1911751743}
 --- !u!114 &1830611069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2295,6 +2300,17 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1911751743 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7334355862509328796, guid: e0f734528502d554f826cb714c18d284, type: 3}
+  m_PrefabInstance: {fileID: 788808772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde74bd5ce502e3499cff145daa5c9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1972249983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,7 +2591,7 @@ GameObject:
   - component: {fileID: 2123554915}
   - component: {fileID: 2123554914}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: StaminaSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
