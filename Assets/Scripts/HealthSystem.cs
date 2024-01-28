@@ -101,6 +101,8 @@ public class HealthSystem : MonoBehaviour
         else if (type == Type.Enemy)
         {
             Destroy(gameObject);
+            AudioManager.instance.PlaySFX("Try 1");
+            
         }
 
     }

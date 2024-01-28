@@ -11,8 +11,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    //public AudioSource quack;
-
     public Animator animator;
 
     public LayerMask enemyLayers;
@@ -66,10 +64,18 @@ public class PlayerBehaviour : MonoBehaviour
                 transform.localScale = new Vector3(1f, 1f, 1f);
             }
 
-            //if (Input.GetKeyDown(KeyCode.Q))
-            //{
-            //    quack.Play();
-            //}
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (Random.value < 0.5f)
+                {
+                    AudioManager.instance.PlaySFX("Duck Quack");
+                }
+                else
+                {
+                    AudioManager.instance.PlaySFX("duck-quack-112941");
+                }
+            }
+
             if (Time.time >= nextAttackTime)
             {
                 if (Input.GetKeyDown(KeyCode.W))
@@ -77,6 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
                     if (healthSystem.currentStamina >= headAttackStaminaCost)
                     {
                         HeadAttack();
+                        AudioManager.instance.PlaySFX("Head Atk");
                         nextAttackTime = Time.time + 1f / headAttackRate;
                     }
                 }
@@ -85,6 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
                     if (healthSystem.currentStamina >= handAttackStaminaCost)
                     {
                         HandAttack();
+                        AudioManager.instance.PlaySFX("Slap Atk");
                         nextAttackTime = Time.time + 1f / headAttackRate;
                     }
                 }
