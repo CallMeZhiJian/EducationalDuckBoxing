@@ -33,8 +33,6 @@ public class DialogueManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
-
                 if (dialogueText.text == currentSentences[activeSentence].sentence)
                 {
                     NextSentence();

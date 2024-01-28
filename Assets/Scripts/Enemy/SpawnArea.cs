@@ -16,7 +16,7 @@ public class SpawnArea : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             SpawnManager.isSpawned = true;
-            SpawnManager.colliderObj= gameObject;
+            SpawnManager.colliderObj = gameObject;
 
             if(dialogueTrigger!= null)
             {

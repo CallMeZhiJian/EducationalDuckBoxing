@@ -12,6 +12,7 @@ public class MainUI : UIManager
     {
         settingScreen = GameObject.Find("SettingScreen");
         duckHead = GameObject.Find("DuckHead");
+        AudioManager.instance.PlayBGM();
     }
 
     public void StartGame()

@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject settingScreen;
     private GameObject audioPage;
     private GameObject controlsPage;
+
+    [SerializeField] private Slider _MusicSlider;
+    [SerializeField] private Slider _SFXSlider;
 
     private void Awake()
     {
@@ -19,7 +23,7 @@ public class UIManager : MonoBehaviour
     }
 
     private void Update()
-    {            
+    {     
         //Setting
         if(settingScreen != null)
         {
@@ -48,7 +52,10 @@ public class UIManager : MonoBehaviour
                     }
                 }
             }
-        }  
+        }
+
+        _MusicSlider.value = AudioManager.instance._BGMSource.volume;
+        _SFXSlider.value = AudioManager.instance._SFXSource.volume;
     }
 
     public void OnOffSetting()
@@ -78,5 +85,13 @@ public class UIManager : MonoBehaviour
     }
 
     //Audio
-    
+    public void AdjustMusicVolume()
+    {
+        AudioManager.instance._BGMSource.volume = _MusicSlider.value;
+    }
+
+    public void AdjustSFXVolume()
+    {
+        AudioManager.instance._SFXSource.volume = _SFXSlider.value;
+    }
 }

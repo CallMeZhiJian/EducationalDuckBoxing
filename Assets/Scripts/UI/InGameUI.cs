@@ -18,6 +18,8 @@ public class InGameUI : UIManager
         {
             pauseScreen.SetActive(false);
         }
+
+        AudioManager.instance.PlayBGM();
     }
 
     private void Update()

@@ -23,7 +23,9 @@ public class SpawnManager : MonoBehaviour
         {
             for(int i = 0; i< spawner.Length; i++)
             {
-                if (colliderObj.name == spawner[i].triggerArea.name)
+                Debug.Log(colliderObj.name);
+                Debug.Log(spawner[i].triggerArea.name);
+                if (string.Equals(colliderObj.name, spawner[i].triggerArea.name))
                 {
                     Instantiate(spawner[i].enemyToSpawn, spawnPoints.transform.position, Quaternion.identity);
                     colliderObj.SetActive(false);

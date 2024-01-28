@@ -930,7 +930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8971826104219001126, guid: e0f734528502d554f826cb714c18d284, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1888,9 +1888,9 @@ MonoBehaviour:
   spawnPoints: {fileID: 371922899}
   spawner:
   - triggerArea: {fileID: 15486504}
-    enemyToSpawn: {fileID: 6473690220663630820, guid: 1828bf52e8cf4ca4691019721e6d31a9, type: 3}
-  - triggerArea: {fileID: 119302520}
     enemyToSpawn: {fileID: 6473690220663630820, guid: 1c9f1f34b89e75d4a8536736fbc24b03, type: 3}
+  - triggerArea: {fileID: 119302520}
+    enemyToSpawn: {fileID: 6473690220663630820, guid: f4eae22cc116c86469822a362b845077, type: 3}
 --- !u!4 &1721913705
 Transform:
   m_ObjectHideFlags: 0

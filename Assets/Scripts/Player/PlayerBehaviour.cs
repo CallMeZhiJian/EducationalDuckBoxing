@@ -52,7 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (!isStunned)
         {
             Move = Input.GetAxis("Horizontal");
-            Debug.Log(Move);
+
             rb.velocity = new Vector2(Move * speed, rb.velocity.y);
 
             animator.SetBool("IsWalking", Mathf.Abs(Move) > 0.1f);

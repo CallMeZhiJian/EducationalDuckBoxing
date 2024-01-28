@@ -45,7 +45,10 @@ public class EnemyBehavior : MonoBehaviour
         selfcollider = GetComponent<BoxCollider2D>();
 
         target = GameObject.Find("Player");
-        targetTr = target.transform;
+        if(target != null)
+        {
+            targetTr = target.transform;
+        } 
     }
 
     private void Update()
@@ -55,12 +58,12 @@ public class EnemyBehavior : MonoBehaviour
             if (onGround)
             {
                 float distance = transform.position.x - targetTr.position.x;
+
                 Debug.Log(distance);
+
                 if (distance < attackDistance && distance > -attackDistance)
                 {
                     selfRb.velocity = new Vector3(0, 0);
-
-                    Physics2D.IgnoreCollision(target.GetComponent<BoxCollider2D>(), selfcollider , true);
 
                     if (attackAllow)
                     {
@@ -77,7 +80,6 @@ public class EnemyBehavior : MonoBehaviour
                                 HandAttack();
                             } 
                         }
-
                         StartCoroutine(AttackDelay());
                     }
 
@@ -95,9 +97,9 @@ public class EnemyBehavior : MonoBehaviour
                         selfRb.velocity = new Vector3(speed, selfRb.velocity.y);
                         transform.localScale = new Vector3(-1, 1, 1);
                     }
-
-                    //  Physics2D.IgnoreCollision(target.GetComponent<BoxCollider2D>(), selfcollider, false);
                 }
+
+                Physics2D.IgnoreCollision(target.GetComponent<BoxCollider2D>(), selfcollider, true);
             }
         }
     }
